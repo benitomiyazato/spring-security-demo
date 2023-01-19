@@ -9,10 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.temporal.TemporalUnit;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,7 +40,7 @@ public class JwtService {
     }
 
     public boolean isTokenExpired(String token){
-        final Date expirationDate = extractExpiration(token);   
+        final Date expirationDate = extractExpiration(token);
         return expirationDate.before(new Date(System.currentTimeMillis()));
     }
 
