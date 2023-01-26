@@ -30,7 +30,7 @@ public class AuthenticationService {
         user.setRole(Role.USER);
         userRepository.save(user);
 
-        return new AuthenticationResponse(jwtService.generateToken(user, 24));
+        return new AuthenticationResponse(jwtService.generateToken(user, 1));
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
@@ -38,6 +38,6 @@ public class AuthenticationService {
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
                 User user = userRepository.findByEmail(request.getEmail()).get();
-        return new AuthenticationResponse(jwtService.generateToken(user, 24));
+        return new AuthenticationResponse(jwtService.generateToken(user, 1));
     }
 }
