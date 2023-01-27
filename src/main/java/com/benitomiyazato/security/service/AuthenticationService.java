@@ -34,10 +34,10 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        authenticationManager.authenticate(
+        Authentication authenticate = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
-                User user = userRepository.findByEmail(request.getEmail()).get();
-        return new AuthenticationResponse(jwtService.generateToken(user, 1));
+
+        return new AuthenticationResponse(jwtService.generateToken(authenticate, 1));
     }
 }
